@@ -13,20 +13,50 @@ import Createjob from "./Admin/Createjob";
 import Dashboard from "./Admin/Dashboard";
 import Managejob from "./Admin/Managejob";
 import EditJob from "./Admin/EditJob";
-import ProtectedRoute from "./Components/ProtectedRoute"; // Import ProtectedRoute
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 const App = () => {
   return (
     <Router>
       <Nav />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute publicOnly={true}>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedRoute publicOnly={true}>
+              <Jobs />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute publicOnly={true}>
+              <About />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute publicOnly={true}>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+
         {/* Admin Routes */}
         <Route
           path="/dashboard"
@@ -52,7 +82,14 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/edit-job/:jobId" element={<EditJob />} />
+        <Route
+          path="/edit-job/:jobId"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <EditJob />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
       <ToastContainer />

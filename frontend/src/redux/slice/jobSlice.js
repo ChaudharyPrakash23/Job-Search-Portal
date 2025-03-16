@@ -1,13 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-// Initial state for jobs
 const initialState = {
   jobs: [],
   loading: false,
   error: null,
 };
 
-// Fetch all jobs
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
   const response = await fetch("http://localhost:5000/api/jobs");
   const data = await response.json();
@@ -17,10 +15,9 @@ export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
 export const fetchJobDetails = createAsyncThunk("jobs/fetchJobDetails", async (jobId) => {
   const response = await fetch(`http://localhost:5000/api/jobs/${jobId}`);
   const data = await response.json();
-  return data.job;  // Assuming the API returns a 'job' object
+  return data.job;  
 });
 
-// Delete a job
 export const deleteJob = createAsyncThunk("jobs/deleteJob", async (jobId) => {
   const response = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
     method: "DELETE",
@@ -38,7 +35,6 @@ export const deleteJob = createAsyncThunk("jobs/deleteJob", async (jobId) => {
 
 // Update a job
 export const updateJob = createAsyncThunk("jobs/updateJob", async ({ jobId, updatedJobData }) => {
-  console.log("Sending update request:", jobId, updatedJobData);
   const response = await fetch(`http://localhost:5000/api/jobs/${jobId}`, {
     method: "PUT",
     headers: {
@@ -52,7 +48,7 @@ export const updateJob = createAsyncThunk("jobs/updateJob", async ({ jobId, upda
   console.log("Server response:", data);
 
   if (response.ok) {
-    return data.job;  // Return the updated job directly
+    return data.job; 
   } else {
     throw new Error("Failed to update job");
   }

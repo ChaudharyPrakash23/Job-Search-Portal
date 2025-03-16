@@ -36,12 +36,13 @@ const EditJob = () => {
         const data = await response.json();
 
         if (response.ok) {
-          setTitle(data.title);
-          setCompany(data.company);
-          setLocation(data.location);
-          setDescription(data.description);
-          setSalary(data.salary);
-          setContractType(data.contractType);
+          const job = data.job || data;
+          setTitle(job.title);
+          setCompany(job.company);
+          setLocation(job.location);
+          setDescription(job.description);
+          setSalary(job.salary);
+          setContractType(job.contractType);
         } else {
           setErrorMessage(data.message || 'Failed to load job details.');
           toast.error(data.message || 'Failed to load job details.');
