@@ -56,8 +56,8 @@ MERN-Job-Search-Portal/
 ## 🏗 Installation & Setup
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/your-username/MERN-Job-Search-Portal.git
-cd MERN-Job-Search-Portal
+git clone https://github.com/prakash chaudhary/MERN-Job-Search-Portal.git
+cd job search portal
 ```
 
 ### **2️⃣ Backend Setup**
@@ -69,7 +69,7 @@ npm start
 
 ### **3️⃣ Frontend Setup**
 ```sh
-cd ../front-end
+cd frontend
 npm install
 npm run dev
 ```
@@ -88,14 +88,6 @@ PORT=5000
 - `GET /api/job-actions/applied` → Returns an array of applied jobs
 - `POST /api/job-actions/save/:jobId` → Saves or unsaves a job
 - `POST /api/job-actions/apply/:jobId` → Applies for a job
-
-## 👥 Contributing
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
-
-## 📜 License
-This project is licensed under the MIT License.
-
----
 
 🎯 Happy Coding!
 
